@@ -12,28 +12,32 @@ var ej4;
             nombre: "Tarea2",
             estado: "en progreso",
             prioridad: 2,
-            personaAsignada: "María"
+            personaAsignada: "Marta Bolsa"
         },
         {
             nombre: "Tarea3",
             estado: "pendientes",
             prioridad: 3,
-            personaAsignada: "Juan"
+            personaAsignada: "Juan par2r"
+        },
+        {
+            nombre: "Tarea4",
+            estado: "pendientes",
+            prioridad: 3,
+            personaAsignada: "Juan Patricio Estrella"
         }
     ];
+    //espera un string y devuelve un boolean
     function esNombrePersonaValido(texto) {
         // Expresión regular para validar solo letras y espacios
-        const regex = /^[A-Za-z\s]+$/;
+        const regex = /^[A-Za-z]+\s?[A-Za-z]*$/;
         // Verificar si el texto coincide con la expresión regular
-        return regex.test(texto);
+        return regex.test(texto.trim()); //posibles espacios extra
+        //si texto coincide con regex devuelvo true .test siempre devuelve boolean
     }
     // Ejemplo de uso
-    const nombre1 = "John"; // válido
-    const nombre2 = "John Smith"; // válido
-    const nombre3 = "John123"; // inválido
-    const nombre4 = "John Smith123"; // inválido
-    console.log(esNombrePersonaValido(nombre1)); // true
-    console.log(esNombrePersonaValido(nombre2)); // true
-    console.log(esNombrePersonaValido(nombre3)); // false
-    console.log(esNombrePersonaValido(nombre4)); // false
+    console.log(esNombrePersonaValido(tareas[0].personaAsignada)); // true
+    console.log(esNombrePersonaValido(tareas[1].personaAsignada)); // true
+    console.log(esNombrePersonaValido(tareas[2].personaAsignada)); // false
+    console.log(esNombrePersonaValido(tareas[3].personaAsignada)); // false
 })(ej4 || (ej4 = {}));

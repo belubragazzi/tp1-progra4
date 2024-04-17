@@ -1,32 +1,19 @@
 "use strict";
 var ej3;
 (function (ej3) {
-    // Crear un array de tareas
-    const tareas = [
-        {
-            nombre: "Tarea1",
-            estado: "pendientes",
-            prioridad: 1,
-            asignadoA: "Juan"
-        },
-        {
-            nombre: "Tarea2",
-            estado: "en progreso",
-            prioridad: 2,
-            asignadoA: "María"
-        },
-        {
-            nombre: "Tarea3",
-            estado: "pendientes",
-            prioridad: 3,
-            asignadoA: "Juan"
-        }
-    ];
-    // Función para obtener las tareas de una persona
-    function obtenerTareasDePersona(persona) {
-        return tareas.filter(nombrePersona => nombrePersona.asignadoA === persona);
-    }
-    // Ejemplo de cómo usar la función para obtener las tareas de una persona
-    const tareasDeJuan = obtenerTareasDePersona("Juan");
-    console.log("Tareas de Juan:", tareasDeJuan);
+    var tareasPorPersona = new Map();
+    const agregarTarea = (mapa, tarea, persona) => {
+        var tareas = mapa.get(persona);
+        if (tareas === undefined)
+            tareas = [];
+        tareas.push(tarea);
+        mapa.set(persona, tareas);
+    };
+    agregarTarea(tareasPorPersona, { nombre: "Tarea1", descripcion: "ordenar" }, "Juan");
+    agregarTarea(tareasPorPersona, { nombre: "Tarea1", descripcion: "desordenar" }, "Pedro");
+    agregarTarea(tareasPorPersona, { nombre: "Tarea2", descripcion: "armar" }, "Pedro");
+    agregarTarea(tareasPorPersona, { nombre: "Tarea3", descripcion: "jugar" }, "Pedro");
+    console.log(tareasPorPersona);
+    const tareasPedro = tareasPorPersona.get("Pedro");
+    console.log(tareasPedro);
 })(ej3 || (ej3 = {}));

@@ -1,7 +1,7 @@
 // tipo de las tareas
 type Tarea = {
     nombre: string,
-    estado: "en progreso" | "terminadas" | "pendientes",
+    estado: boolean,
     prioridad: 1 | 2 | 3
 };
 
@@ -9,52 +9,52 @@ type Tarea = {
 const tareas: Tarea[] = [
     { 
         nombre: "Tarea1",
-        estado: "pendientes",
+        estado: false,
         prioridad: 1
     },
     { 
         nombre: "Tarea2",
-        estado: "en progreso",
+        estado: true,
         prioridad: 2
     },
     { 
         nombre: "Tarea3",
-        estado: "pendientes",
+        estado: false,
         prioridad: 3
     },
     { 
         nombre: "Tarea4",
-        estado: "terminadas",
+        estado: true,
         prioridad: 1
     },
     { 
         nombre: "Tarea5",
-        estado: "pendientes",
+        estado: false,
         prioridad: 2
     },
     { 
         nombre: "Tarea6",
-        estado: "en progreso",
+        estado: true,
         prioridad: 3
     },
     { 
         nombre: "Tarea7",
-        estado: "pendientes",
+        estado: false,
         prioridad: 2
     },
     { 
         nombre: "Tarea8",
-        estado: "pendientes",
+        estado: false,
         prioridad: 3
     },{ 
         nombre: "Tarea9",
-        estado: "pendientes",
+        estado: false,
         prioridad: 2
     },
 ];
 
 
-const tareasPendientes = tareas.filter(tarea => tarea.estado === "pendientes");
+const tareasPendientes = tareas.filter(tarea => !tarea.estado);
 const tareasPendientesOrdenadas = tareasPendientes.sort((a, b) => a.prioridad - b.prioridad);
 
 

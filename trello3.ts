@@ -1,42 +1,32 @@
 namespace ej3 {
-    // Definir el tipo de las tareas
-type Tarea = {
-    nombre: string,
-    estado: "en progreso" | "terminadas" | "pendientes",
-    prioridad: 1 | 2 | 3,
-    asignadoA: string
-};
+ 
+    type Tarea = {
+        nombre: string,
+        descripcion: string
+    };
 
-// Crear un array de tareas
-const tareas: Tarea[] = [
-    { 
-        nombre: "Tarea1",
-        estado: "pendientes",
-        prioridad: 1,
-        asignadoA: "Juan"
-    },
-    { 
-        nombre: "Tarea2",
-        estado: "en progreso",
-        prioridad: 2,
-        asignadoA: "María"
-    },
-    { 
-        nombre: "Tarea3",
-        estado: "pendientes",
-        prioridad: 3,
-        asignadoA: "Juan"
+    type Persona = string;
+    
+    var tareasPorPersona = new Map<Persona, Tarea[]>();
+
+
+    const agregarTarea = (mapa: Map<Persona, Tarea[]>, tarea: Tarea, persona: Persona) => {
+        var tareas = mapa.get(persona)
+        if(tareas === undefined)
+            tareas = [];
+        tareas.push(tarea);
+        mapa.set(persona, tareas)
     }
-];
+    
+    agregarTarea(tareasPorPersona, {nombre: "Tarea1", descripcion: "ordenar"},"Juan");
+    agregarTarea(tareasPorPersona, {nombre: "Tarea1", descripcion: "desordenar"},"Pedro");
+    agregarTarea(tareasPorPersona, {nombre: "Tarea2", descripcion: "armar"},"Pedro");
+    agregarTarea(tareasPorPersona, {nombre: "Tarea3", descripcion: "jugar"},"Pedro");
+    
+    console.log(tareasPorPersona)
+    const tareasPedro = tareasPorPersona.get("Pedro")
 
-// Función para obtener las tareas de una persona
-function obtenerTareasDePersona(persona: string): Tarea[] {
-    return tareas.filter(nombrePersona => nombrePersona.asignadoA === persona);
-}
-
-// Ejemplo de cómo usar la función para obtener las tareas de una persona
-const tareasDeJuan = obtenerTareasDePersona("Juan");
-console.log("Tareas de Juan:", tareasDeJuan);
+    console.log(tareasPedro)
 
 }
 
