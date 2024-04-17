@@ -21,7 +21,8 @@ Hice la misma funcion anterior pero:
 
 ## Ejercicio 3
 
-
+hice un mapa que guarde las tareas en las personas a quienes se las asigna
+para llamar a una persona use el .get y el nombre de la persona, asi aparecen todas las tareas asignadas a su nombre
 
 ## Ejercicio 4
 
